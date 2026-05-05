@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/**
+ * main.css - Custom styles for this theme
+ * @since 1.0.0
+ */
+/* ==========================================================================
+   1. 変数の再定義とベース設定
+   ========================================================================== */
+:root {
+    /* theme.jsonで設定した値を参照 */
+    --accent-color: var(--wp--preset--color--link-hover); /* 濃い赤 */
+}
+
+/* ==========================================================================
+   2. 見出しのデザイン
+   ========================================================================== */
+main h1 {
+    padding-bottom: 15px;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+main h2 {
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid #eee;
+}
+
+main h2::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: clamp(40px, 10%, 80px);
+    height: 4px;
+    background-color: var(--accent-color);
+}
+
+main h3 {
+    padding-left: 12px;
+    border-left: 5px solid var(--accent-color);
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+}
+
+main h4 {
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   3. レイアウト調整（ユーティリティクラス）
+   ========================================================================== */
+
+/* クラス「no-gap」がついた要素の上下余白を強制解除 */
+.no-gap {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   4. フッターを最下部に固定する設定
+   ========================================================================== */
+
+/* ブロックテーマのルート要素に対して適用 */
+.wp-site-blocks {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* メインコンテンツエリアを伸ばす */
+/* WordPressのテンプレート構造に応じて複数のクラスをカバー */
+.wp-site-blocks > main,
+.wp-site-blocks > .wp-block-group.has-background, /* 背景色ありのグループ等 */
+.wp-site-blocks > .entry-content {
+    flex: 1 0 auto;
+}
+
+/* フッターの縮みを防止 */
+footer {
+    flex-shrink: 0;
+}
+
